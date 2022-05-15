@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEAR Native Price Oracle Data</title>
+
+    <meta name="og:title" content="NEAR Native Price Oracle Data"/>
+    <meta name="og:description" content="%NEAR Native Price Oracle Data"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Outfit:100,200,300,regular,500,600,700,800,900"
+          rel="stylesheet"/>
+
+    <style>
+        :root {
+            --oxford-blue: hsl(217, 54%, 11%);
+            --light-oxford-blue: hsl(216, 50%, 16%);
+            --indigo-dye: hsl(215, 32%, 27%);
+            --blue-yonder: hsl(216, 30%, 55%);
+            --aqua: hsl(178, 100%, 50%);
+            --white: hsl(0, 0%, 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: "Outfit", sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            background: var(--oxford-blue);
+            min-height: 100vh;
+            padding: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: var(--white);
+            font-size: 24px;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--white);
+            font-size: 24px;
+            padding-bottom: 5px;
+        }
+
+        .prices, .validators {
+            color: var(--white);
+            font-size: 18px;
+            border-spacing: 0;
+        }
+
+        .prices tbody tr:nth-of-type(odd), .validators tbody tr:nth-of-type(odd) {
+            background-color: #2f415b;
+        }
+
+        .prices td, .validators td, .prices th, .validators th {
+            padding: 3px;
+            vertical-align: bottom;
+        }
+
+        .prices th, .validators th {
+            font-weight: initial;
+            text-align: left;
+        }
+
+        .prices td:first-child, .validators td:first-child, .prices th:first-child, .validators th:first-child {
+            width: 100%;
+        }
+
+        .prices td:last-child, .validators td:last-child {
+            font-family: monospace;
+            min-width: 115px;
+        }
+
+        .card {
+            background: var(--light-oxford-blue);
+            max-width: 350px;
+            padding: 24px;
+            border-radius: 15px;
+            box-shadow: 0 20px 25px 15px rgba(0, 0, 0, 0.05),
+            0 40px 30px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .validators-header {
+            padding-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>NEAR Native Price Oracle</h1>
+
+    <h2>Assets</h2>
+
+    <table class="prices">
+        <thead>
+            <tr>
+                <th>Asset</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            %PRICES%
+        </tbody>
+    </table>
+
+    <h2 class="validators-header">Oracle validators</h2>
+
+    <table class="validators">
+        <thead>
+            <tr>
+                <th>Oracle Validator</th>
+                <th>Last&nbsp;report, seconds ago</th>
+            </tr>
+        </thead>
+        <tbody>
+            %VALIDATORS%
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
