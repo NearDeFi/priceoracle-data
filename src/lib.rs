@@ -14,7 +14,7 @@ pub struct Contract {
     pub config: LookupMap<AccountId, TokenConfig>,
 }
 
-#[derive(BorshDeserialize, BorshSerialize, Deserialize)]
+#[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize)]
 #[serde(crate = "near_sdk::serde")]
 pub struct TokenConfig {
     pub token_name: String,
@@ -36,14 +36,21 @@ impl Contract {
     }
 
     #[private]
-    pub fn add_token_config (&mut self, account_id: AccountId, config: TokenConfig) {
+    pub fn add_token_config(&mut self, account_id: AccountId, config: TokenConfig) {
         self.config.insert(&account_id, &config);
     }
 
     #[private]
-    pub fn add_token_configs (&mut self, configs: Vec<(AccountId, TokenConfig)>) {
+    pub fn add_token_configs(&mut self, configs: Vec<(AccountId, TokenConfig)>) {
         for (account_id, config) in configs {
             self.config.insert(&account_id, &config);
         }
+    }
+
+    pub fn get_config(&self, keys: Vec<AccountId>) -> Vec<(AccountId, Option<TokenConfig>)> {
+        keys
+            .into_iter()
+            .map(|account_id| (account_id.clone(), self.config.get(&account_id)))
+            .collect()
     }
 }
